@@ -8,7 +8,7 @@ var logger = require('winston');
 var deepcopy = require("deepcopy");
 const config=require('../config/config.json');
 
-const hostIpAddress='192.168.1.103';
+const hostIpAddress='192.168.1.105';
 const backendPort=5000;
 
 const WS_HOST= "ws://"+hostIpAddress+":"+backendPort;

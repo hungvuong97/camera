@@ -17,7 +17,7 @@ module.exports = {
             apiMode="playback";
         }
         delete configObj.garage.backend;
-        let hostIpAddress='192.168.1.103';
+        let hostIpAddress='192.168.1.105';
         let backendPort=5000;
         configObj.garage[apiMode].webSocket.url="ws://"+hostIpAddress+":"+backendPort;
         configObj.garage[apiMode].apis.baseurl="http://"+hostIpAddress+":"+backendPort;

@@ -73,6 +73,7 @@ class CarMarker extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
+        console.log(this.props.car.state)
         /* update component when car is moving and lat/lng changed, or isOpen changed, or map zoom changed */
         return (this.props.car.state === 'moving' && (this.props.car.lat !== nextProps.car.lat || this.props.car.lon !== nextProps.car.lon)) || this.state.isOpen !== nextState.isOpen || this.props.zoom !== nextProps.zoom;
     }
@@ -103,6 +104,7 @@ class CarMarker extends Component {
                     Timestamp: {parkingTime}
                 </p>
             );
+            console.log(this.props.zoom)
             switch (this.props.zoom) {
                 case 19:
                     icon = {

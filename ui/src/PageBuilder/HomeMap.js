@@ -121,11 +121,10 @@ class HomeMap extends Component {
         
         let startTimestamp = this.props.locations.garage.isLive ? this.props.locations.garage.live.apis.startTimestamp : this.props.locations.garage.playback.apis.startTimestamp;
         let diffTime = this.props.locations.garage.isLive ? '' :  moment.utc().diff(moment.utc(startTimestamp), 's');
-       
         if (this.state.zoom > 16) {
-
             /* show the garage layer only if the zoom size is larger than 16 */
             if (this.state.centerWithin.garage) {
+                console.log(this.props.locations)
                 window.location.hash = '#/garage';
                 showContent = <SmartGaragePage
                     user={this.state.user}
@@ -154,7 +153,6 @@ class HomeMap extends Component {
                     height: 'calc(100vh - 132px)'
                 };
         }
-
         return (
             <div>
                 <Header />

@@ -24,13 +24,10 @@ class App extends Component {
   componentDidMount() {
     this.source = Axios.CancelToken.source();
     /* query the REST API to retrieve configuration information. */
-    console.log(process.env.REACT_APP_BACKEND_IP_ADDRESS ,process.env.REACT_APP_BACKEND_PORT)
     Axios.get('http://' + process.env.REACT_APP_BACKEND_IP_ADDRESS + ':' + process.env.REACT_APP_BACKEND_PORT + '/ui-config')
       .then((res) => {
-        console.log(res.data)
         /* copy the configuration into envVar */
         const envVar = res.data;
-        console.log(envVar)
         this.setState({ envVar: envVar });
       })
       .catch(err => {
@@ -46,6 +43,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.envVar)
     if (this.state.envVar !== undefined && Object.keys(this.state.envVar).length !== 0) {
       return (
         <div>

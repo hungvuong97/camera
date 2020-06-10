@@ -94,6 +94,7 @@ var start = function (cb) {
       logger.info('[CONN RECV] Received at: %s:%d', ws._socket.remoteAddress, ws._socket.remotePort)
       var intObj = null
       //on connect message
+      console.log123, (ws, '123')
       ws.on('message', function incoming(message) {
         if (intObj != null) {
           // Stop the periodic transmission of existing stream

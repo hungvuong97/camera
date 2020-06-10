@@ -26,6 +26,7 @@ const esClient = new es.Client({
 const checkIndexExists = (indexName) => {
     return new Promise(function (resolve, reject) {
         esClient.indices.exists({ index: indexName }).then(response=> {
+            console.log(response)
             resolve(response)
         }).catch(error=>{
             reject(error);
@@ -219,7 +220,6 @@ module.exports={
         let q=req.query['q'];
         let timeQuery=req.query['timeQuery'];
         let isSearch=(req.query['isSearch']=== 'true');
-        console.log(222, q)
         q=formatSearchQuery(q,timeQuery);
         getEvents(q,isSearch).then((response) => {
             if(isSearch){

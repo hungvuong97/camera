@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 
 import classes from './SmartGaragePage.css';
-import overlayImage from '../../assets/X-StrpP1_simpleConverted.png';
+import overlayImage from '../../assets/test.png';
 
 import Capacity from '../../Component/Capacity/Capacity';
 // import Flip from '../../Component/Flip/Flip';
@@ -44,21 +44,23 @@ class SmartGaragePage extends Component {
         plate: '',
         isTimeValid: true
     }
-
     searchClickHandler = (q) => {
         this.setState({ searchQuery: q, isTimeValid: q.isTimeValid });
     }
 
     componentDidMount() {
-
+        console.log(this.props.location)
         /* reflect ui delay */
         let delayTimestamp;
 
         if (this.state.isLive) {
             delayTimestamp = moment().subtract(this.state.apis.uiDelaySeconds, 's').utc().format();
+            console.log(delayTimestamp)
         }
         else {
             delayTimestamp = moment.utc(this.state.source.webSocket.startTimestamp).subtract(this.state.apis.uiDelaySeconds, 's').utc().format();
+            console.log(delayTimestamp)
+
         }
 
         const googlemap = {

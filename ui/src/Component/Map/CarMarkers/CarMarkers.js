@@ -19,6 +19,7 @@ class CarMarkers extends Component {
 
     componentDidMount() {
         /* if there is a websocket url. */
+        console.log(this.props.websocket.url)
         if (this.props.websocket.url !== '' || this.props.websocket.url !== undefined) {
             /* if browser supports web worker. */
             if (window.Worker) {
@@ -31,7 +32,7 @@ class CarMarkers extends Component {
                     garageLevel: this.props.websocket.garageLevel,
                     garageId: this.props.websocket.garageId
                 });
-
+                console.log(socketRequest, this.props.websocket)
                 this.myWorker.postMessage([this.props.websocket.url, socketRequest, window.location.hash]);
                 this.myWorker.onmessage = (m) => {
                     this.setState({ cars: m.data });
@@ -47,7 +48,10 @@ class CarMarkers extends Component {
 
     componentDidUpdate(prevProps, prevState) {
         /* if there is a websocket url or zoom changed, and location changed */
+        console.log((this.props.websocket.url !== '' || this.props.websocket.url !== undefined || this.props.zoom !== prevProps.zoom) && this.props.websocket.garageLevel !== prevProps.websocket.garageLevel)
+        console.log(this.props.websocket.url, this.props.zoom, prevProps.zoom,this.props.websocket.garageLevel,prevProps.websocket.garageLevel  )
         if ((this.props.websocket.url !== '' || this.props.websocket.url !== undefined || this.props.zoom !== prevProps.zoom) && this.props.websocket.garageLevel !== prevProps.websocket.garageLevel) {
+            console.log('2333')
             this.setState({
                 cars: {}
             });
@@ -58,9 +62,10 @@ class CarMarkers extends Component {
                 garageLevel: this.props.websocket.garageLevel,
                 garageId: this.props.websocket.garageId
             });
-
+            console.log(this.props.websocket.url, socketRequest, window.location.hash, 1)
             this.myWorker.postMessage([this.props.websocket.url, socketRequest, window.location.hash]);
             this.myWorker.onmessage = (m) => {
+                console.log(m)
                 this.setState({ cars: m.data });
             }
         }
@@ -71,12 +76,13 @@ class CarMarkers extends Component {
     }
 
     render() {
-
         let carmarkers = [];
         let isOpen = false;
+        console.log(this.state.cars)
         Object.entries(this.state.cars).forEach(([key, value]) => {
             isOpen = value.state === 'moving';
             if (this.props.bounds.contains(new google.maps.LatLng(value.lat, value.lon))) {
+                console.log(value)
                 carmarkers.push(
                     <CarMarker
                         key={key}

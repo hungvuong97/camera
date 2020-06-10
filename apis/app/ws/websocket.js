@@ -14,7 +14,7 @@ var logger = winston.createLogger({
 const cassandraHosts = config.garage.backend.cassandraHosts;
 // Connection to Cassandra
 const client = new cassandra.Client({ contactPoints: cassandraHosts, keyspace: config.garage.backend.cassandraKeyspace });
-
+console.log('client', client)
 // Reading constants from config file
 const IS_LIVE = config.garage.isLive;
 const CLI_SEND_PERIOD_IN_MS = config.garage.backend.webSocketSendPeriodInMs; 
@@ -325,6 +325,7 @@ module.exports = {
     /** Uses the startTimestamp, garageId and garageLevel sent by websocket client to send results to the client at regular intervals of time */
     sendUpdates: function (ws, startTimestamp, garageId, garageLevel) {
         try {
+            console.log(ws)
             var timestampInMs = Date.parse(startTimestamp)
             if (isNaN(timestampInMs) == false) {
                 startTimestamp = new Date(startTimestamp);

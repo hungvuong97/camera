@@ -60,6 +60,7 @@ class Map extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        console.log(nextProps)
         /* if user clicked location marker */
         if (this.props.googlemap.defaultCenter !== undefined && (this.props.googlemap.defaultCenter.lat !== nextProps.googlemap.defaultCenter.lat || this.props.googlemap.defaultCenter.lng !== nextProps.googlemap.defaultCenter.lng || (window.location.hash !== '#/home' && this.state.zoom !== nextProps.zoom))) {
             this.setState({
@@ -80,6 +81,7 @@ class Map extends Component {
 
     render() {
         let markers;
+        console.log(this.props.websocket)
         /* if zoom > 16 && there are websocket url, show car&camera markers */
         if (this.state.zoom > 16 && this.props.websocket.url !== undefined && this.props.websocket.url !== null && this.props.websocket.url !== '') {
             markers = [

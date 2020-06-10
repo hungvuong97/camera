@@ -4,8 +4,8 @@
         "username_api": "",
         "googleMap": {
             "defaultCenter": {
-                "lat": 37.2667081,
-                "lng": -121.9852038
+                "lat": 21.00027778,
+                "lng": 105.84583333
             },
             "defaultZoom": 14,
             "maxZoom": 21,
@@ -16,8 +16,8 @@
         "locations": [
             {
                 "name": "garage",
-                "lat": 37.287535,
-                "lng": -121.98473
+                "lat": 21.00027778,
+                "lng": 105.84583333
             }
         ]
     },
@@ -44,12 +44,12 @@
             "mapTypeId": "roadmap"
         },
         "groundOverlay": {
-            "p1GroundImage": "assets/X-StrpP1_simpleConverted.png",
+            "p1GroundImage": "assets/test.png",
             "p1Bounds": {
-                "north": 37.2881998,
-                "south": 37.2863798,
-                "east": -121.9838699,
-                "west": -121.9859025
+                "north": 37.2886489370708,
+            "south": 37.2864695830171,
+            "east": -121.983629765596,
+            "west": -121.986218361030
             }
         },
         "isLive": false,
@@ -95,7 +95,7 @@
         "backend": {
             "cassandraHosts": ["cassandra:9042"],
             "cassandraKeyspace": "metromind",
-            "esHost": "elasticsearch",
+            "esHost": "127.0.0.1",
             "esPort": 9200,
             "esAnomalyIndex": "metromind-anomaly-day2*",
             "esEventsIndex": "metromind-start-day2*",
